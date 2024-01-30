@@ -10,38 +10,106 @@ repository = "https://github.com/vectordotdev/vrl"
 readme = "README.md"
 keywords = ["vector", "datadog", "compiler"]
 categories = ["compilers"]
-rust-version = "1.70.0" # msrv
+rust-version = "1.70.0"                                  # msrv
 
 [workspace]
-members = [
-  ".",
-  "lib/cli",
-  "lib/tests",
-  "lib/fuzz"
-]
+members = [".", "lib/cli", "lib/tests", "lib/fuzz"]
 
 
 [features]
-default = ["compiler", "value", "diagnostic", "path", "parser", "stdlib", "datadog", "core"]
+default = [
+  "compiler",
+  "value",
+  "diagnostic",
+  "path",
+  "parser",
+  "stdlib",
+  "datadog",
+  "core",
+]
 
 # Main features (on by default)
-compiler = ["diagnostic", "path", "parser", "value", "dep:paste", "dep:chrono", "dep:serde", "dep:regex", "dep:bytes", "dep:ordered-float", "dep:chrono-tz", "dep:snafu", "dep:tracing", "dep:thiserror", "dep:dyn-clone", "dep:indoc", "dep:thiserror", "dep:lalrpop-util"]
-value = ["path", "dep:bytes", "dep:regex", "dep:ordered-float", "dep:chrono", "dep:serde_json"]
+compiler = [
+  "diagnostic",
+  "path",
+  "parser",
+  "value",
+  "dep:paste",
+  "dep:chrono",
+  "dep:serde",
+  "dep:regex",
+  "dep:bytes",
+  "dep:ordered-float",
+  "dep:chrono-tz",
+  "dep:snafu",
+  "dep:tracing",
+  "dep:thiserror",
+  "dep:dyn-clone",
+  "dep:indoc",
+  "dep:thiserror",
+  "dep:lalrpop-util",
+]
+value = [
+  "path",
+  "dep:bytes",
+  "dep:regex",
+  "dep:ordered-float",
+  "dep:chrono",
+  "dep:serde_json",
+]
 diagnostic = ["dep:codespan-reporting", "dep:termcolor"]
 path = ["value", "dep:once_cell", "dep:serde", "dep:snafu", "dep:regex"]
-parser = ["path", "diagnostic", "value", "dep:thiserror", "dep:ordered-float", "dep:lalrpop-util"]
+parser = [
+  "path",
+  "diagnostic",
+  "value",
+  "dep:thiserror",
+  "dep:ordered-float",
+  "dep:lalrpop-util",
+]
 core = ["value", "dep:snafu", "dep:nom"]
 string_path = []
 
 # Datadog related features (on by default)
 datadog = ["datadog_filter", "datadog_grok", "datadog_search"]
 datadog_filter = ["datadog_search", "dep:regex", "dep:dyn-clone"]
-datadog_grok = ["value", "dep:nom", "dep:peeking_take_while", "dep:serde_json", "dep:onig", "dep:lalrpop-util", "dep:thiserror", "dep:chrono", "dep:chrono-tz", "dep:tracing"]
-datadog_search = ["dep:pest", "dep:pest_derive", "dep:itertools", "dep:once_cell", "dep:regex"]
+datadog_grok = [
+  "value",
+  "dep:nom",
+  "dep:peeking_take_while",
+  "dep:serde_json",
+  "dep:onig",
+  "dep:lalrpop-util",
+  "dep:thiserror",
+  "dep:chrono",
+  "dep:chrono-tz",
+  "dep:tracing",
+]
+datadog_search = [
+  "dep:pest",
+  "dep:pest_derive",
+  "dep:itertools",
+  "dep:once_cell",
+  "dep:regex",
+]
 
 # Features that aren't used as often (default off)
-cli = ["stdlib", "dep:serde_json", "dep:thiserror", "dep:clap", "dep:exitcode", "dep:webbrowser", "dep:rustyline", "dep:prettytable-rs"]
-test_framework = ["compiler", "dep:prettydiff", "dep:serde_json", "dep:ansi_term"]
+cli = [
+  "stdlib",
+  "dep:serde_json",
+  "dep:thiserror",
+  "dep:clap",
+  "dep:exitcode",
+  "dep:webbrowser",
+  "dep:rustyline",
+  "dep:prettytable-rs",
+]
+test_framework = [
+  "compiler",
+  "dep:prettydiff",
+  "dep:serde_json",
+  "dep:ansi_term",
+]
 arbitrary = ["dep:quickcheck", "dep:arbitrary"]
 lua = ["dep:mlua"]
 
@@ -49,64 +117,137 @@ lua = ["dep:mlua"]
 test = ["string_path"]
 
 # All stdlib functions
-stdlib = ["compiler", "core", "datadog", "dep:aes", "dep:chacha20poly1305", "dep:crypto_secretbox", "dep:ctr", "dep:cbc", "dep:cfb-mode", "dep:ofb", "dep:base16", "dep:nom", "dep:strip-ansi-escapes", "dep:utf8-width", "dep:hex", "dep:seahash", "dep:syslog_loose", "dep:hostname", "dep:zstd", "dep:quoted_printable", "dep:once_cell", "dep:base64", "dep:uuid", "dep:percent-encoding", "dep:uaparser", "dep:rust_decimal", "dep:indexmap", "dep:flate2", "dep:charset", "dep:data-encoding", "dep:hmac", "dep:sha-1", "dep:cidr-utils", "dep:sha-2", "dep:md-5", "dep:url", "dep:woothee", "dep:csv", "dep:roxmltree", "dep:rand", "dep:dns-lookup", "dep:sha-3", "dep:grok", "dep:community-id", "dep:snap"]
+stdlib = [
+  "compiler",
+  "core",
+  "datadog",
+  "dep:aes",
+  "dep:chacha20poly1305",
+  "dep:crypto_secretbox",
+  "dep:ctr",
+  "dep:cbc",
+  "dep:cfb-mode",
+  "dep:ofb",
+  "dep:base16",
+  "dep:nom",
+  "dep:strip-ansi-escapes",
+  "dep:utf8-width",
+  "dep:hex",
+  "dep:seahash",
+  "dep:syslog_loose",
+  "dep:hostname",
+  "dep:zstd",
+  "dep:quoted_printable",
+  "dep:once_cell",
+  "dep:base64",
+  "dep:uuid",
+  "dep:percent-encoding",
+  "dep:uaparser",
+  "dep:rust_decimal",
+  "dep:indexmap",
+  "dep:flate2",
+  "dep:charset",
+  "dep:data-encoding",
+  "dep:hmac",
+  "dep:sha-1",
+  "dep:cidr-utils",
+  "dep:sha-2",
+  "dep:md-5",
+  "dep:url",
+  "dep:woothee",
+  "dep:csv",
+  "dep:roxmltree",
+  "dep:rand",
+  "dep:dns-lookup",
+  "dep:sha-3",
+  "dep:grok",
+  "dep:community-id",
+  "dep:snap",
+]
 
 [dependencies]
 cfg-if = "1.0.0"
 
 # Optional dependencies
-ansi_term = {version = "0.12", optional = true }
+ansi_term = { version = "0.12", optional = true }
 arbitrary = { version = "1", optional = true, features = ["derive"] }
 base16 = { version = "0.2", optional = true }
 base64 = { version = "0.21", optional = true }
 bytes = { version = "1.5.0", default-features = false, optional = true }
 charset = { version = "0.1.3", optional = true }
-chrono = { version = "0.4", default-features = false, features = ["clock", "serde", "wasmbind"], optional = true }
+chrono = { version = "0.4", default-features = false, features = [
+  "clock",
+  "serde",
+  "wasmbind",
+], optional = true }
 chrono-tz = { version = "0.8.5", default-features = false, optional = true }
 cidr-utils = { version = "0.6", optional = true }
 csv = { version = "1.3", optional = true }
 clap = { version = "4.4.18", features = ["derive"], optional = true }
-codespan-reporting = {version = "0.11", optional = true }
+codespan-reporting = { version = "0.11", optional = true }
 data-encoding = { version = "2.5.0", optional = true }
 dyn-clone = { version = "1.0.16", default-features = false, optional = true }
-exitcode = {version = "1", optional = true }
-flate2 = { version = "1.0.28", default-features = false, features = ["default"], optional = true }
+exitcode = { version = "1", optional = true }
+flate2 = { version = "1.0.28", default-features = false, features = [
+  "default",
+], optional = true }
 hex = { version = "0.4", optional = true }
 hmac = { version = "0.12.1", optional = true }
-indexmap = { version = "~2.1.0", default-features = false, features = ["std"], optional = true}
-indoc = {version = "2.0.4", optional = true }
+indexmap = { version = "2.2.1", default-features = false, features = [
+  "std",
+], optional = true }
+indoc = { version = "2.0.4", optional = true }
 itertools = { version = "0.12.0", default-features = false, optional = true }
 lalrpop-util = { version = "0.20", optional = true }
-mlua = { version = "0.9.5", default-features = false, features = ["lua54", "send", "vendored"], optional = true}
-nom = { version = "7.1.3", default-features = false, features = ["std"], optional = true }
-once_cell = { version = "1.19", default-features = false, features = ["std"], optional = true }
+mlua = { version = "0.9.5", default-features = false, features = [
+  "lua54",
+  "send",
+  "vendored",
+], optional = true }
+nom = { version = "7.1.3", default-features = false, features = [
+  "std",
+], optional = true }
+once_cell = { version = "1.19", default-features = false, features = [
+  "std",
+], optional = true }
 ordered-float = { version = "4", default-features = false, optional = true }
 md-5 = { version = "0.10", optional = true }
 paste = { version = "1", default-features = false, optional = true }
 peeking_take_while = { version = "1.0.0", default-features = false, optional = true }
 percent-encoding = { version = "2.3", optional = true }
-pest = { version = "2.7.6", default-features = false, optional = true, features = ["std"] }
-pest_derive = { version = "2.7.6", default-features = false, optional = true, features = ["std"] }
-prettydiff = {version = "0.6", default-features = false, optional = true }
+pest = { version = "2.7.6", default-features = false, optional = true, features = [
+  "std",
+] }
+pest_derive = { version = "2.7.6", default-features = false, optional = true, features = [
+  "std",
+] }
+prettydiff = { version = "0.6", default-features = false, optional = true }
 prettytable-rs = { version = "0.10", default-features = false, optional = true }
 quickcheck = { version = "1.0.3", optional = true }
-quoted_printable = {version = "0.5.0", optional = true }
+quoted_printable = { version = "0.5.0", optional = true }
 rand = { version = "0.8.5", optional = true }
-regex = { version = "1", default-features = false, optional = true, features = ["std", "perf", "unicode"] }
+regex = { version = "1", default-features = false, optional = true, features = [
+  "std",
+  "perf",
+  "unicode",
+] }
 roxmltree = { version = "0.19.0", optional = true }
 rustyline = { version = "13", default-features = false, optional = true }
 rust_decimal = { version = "1", optional = true }
 seahash = { version = "4.1.0", optional = true }
 serde = { version = "1", features = ["derive"], optional = true }
-serde_json = { version = "1.0.113", default-features = false, optional = true, features = ["std", "raw_value"] }
+serde_json = { version = "1.0.113", default-features = false, optional = true, features = [
+  "std",
+  "raw_value",
+] }
 sha-1 = { version = "0.10", optional = true }
 sha-2 = { package = "sha2", version = "0.10", optional = true }
 sha-3 = { package = "sha3", version = "0.10", optional = true }
 strip-ansi-escapes = { version = "0.2", optional = true }
 snap = { version = "1", optional = true }
 syslog_loose = { version = "0.21", optional = true }
-termcolor = {version = "1", optional = true }
-thiserror ={ version =  "1", optional = true }
+termcolor = { version = "1", optional = true }
+thiserror = { version = "1", optional = true }
 tracing = { version = "0.1.40", default-features = false, optional = true }
 uaparser = { version = "0.6.1", default-features = false, optional = true }
 utf8-width = { version = "0.1.7", optional = true }
@@ -114,14 +255,18 @@ url = { version = "2", optional = true }
 snafu = { version = "0.8", optional = true }
 webbrowser = { version = "0.8", default-features = false, optional = true }
 woothee = { version = "0.13.0", optional = true }
-community-id = { version = "0.2.2", optional = true}
+community-id = { version = "0.2.2", optional = true }
 
-zstd = { version = "0.13.0", default-features = false, features = ["wasm"], optional = true }
+zstd = { version = "0.13.0", default-features = false, features = [
+  "wasm",
+], optional = true }
 
 # Cryptography
 aes = { version = "0.8.2", optional = true }
 chacha20poly1305 = { version = "0.10.1", optional = true }
-crypto_secretbox = { version = "0.1.1", features = ["salsa20"], optional = true }
+crypto_secretbox = { version = "0.1.1", features = [
+  "salsa20",
+], optional = true }
 
 # Cryptography - Block Modes
 ctr = { version = "0.9.2", optional = true }
@@ -149,9 +294,17 @@ serde_json = "1"
 indoc = "2.0.4"
 tracing-test = { version = "0.2", default-features = false }
 toml = { version = "0.8.8", default-features = false }
-mlua = { version = "0.9.5", default-features = false, features = ["lua54", "send", "vendored"]}
-quickcheck = { version = "1.0.3"}
-regex = { version = "1", default-features = false, features = ["std", "perf", "unicode"] }
+mlua = { version = "0.9.5", default-features = false, features = [
+  "lua54",
+  "send",
+  "vendored",
+] }
+quickcheck = { version = "1.0.3" }
+regex = { version = "1", default-features = false, features = [
+  "std",
+  "perf",
+  "unicode",
+] }
 paste = { version = "1", default-features = false }
 
 [build-dependencies]
